@@ -9,12 +9,14 @@ import jakarta.persistence.Id;
 public class Member {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
 
     private String password;
 
     private String name;
+
+
 
     @Override
     public String toString() {
