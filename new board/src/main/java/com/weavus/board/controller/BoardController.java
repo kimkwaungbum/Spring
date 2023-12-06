@@ -58,14 +58,10 @@ public class BoardController {
         }
     }
 
-    @DeleteMapping("/delete/{no}")
-    private String delete(@PathVariable("no") Integer no){
-        boardRepo.deleteById(no);
-        return "redirect:/board/list";
-    }
+
 
     @GetMapping("/modify/{no}")
-    private String modify(@PathVariable Integer no,Model model){
+    private String moveModify(@PathVariable Integer no,Model model){
         Optional<Board> board = boardRepo.findById(no);
         if(board.isPresent()){
             model.addAttribute("board",board.get());
@@ -75,6 +71,23 @@ public class BoardController {
             return "redirect:/board/list";
 
         }
+    }
+    @PutMapping("/modify/{no}")
+    private String modify(@PathVariable Integer no, BoardDto boardDto, HttpServletRequest request) {
+        Board board = new Board();
+        board.setNo(no);
+        board.setTitle(boardDto.getTitle());
+        board.setContent(boardDto.getContent());
+        HttpSession session = request.getSession();
+        board.setWritter(session.getAttribute("sessionUserName").toString());
+
+        boardRepo.save(board);
+        return "redirect:/board/detail"+no;
+    }
+    @DeleteMapping("/delete/{no}")
+    public String delete(@PathVariable("no") Integer no){
+        boardRepo.deleteById(no);
+        return "redirect:/board/list";
     }
 
 }
