@@ -6,16 +6,9 @@ public class MemberDto {
 
     private String password;
 
-    private String name;
+    private String passwordConfirmation;
 
-    @Override
-    public String toString() {
-        return "MemberDto{" +
-                "id='" + id + '\'' +
-                ", password='" + password + '\'' +
-                ", name='" + name + '\'' +
-                '}';
-    }
+    private String name;
 
     public String getId() {
         return id;
@@ -33,6 +26,14 @@ public class MemberDto {
         this.password = password;
     }
 
+    public String getPasswordConfirmation() {
+        return passwordConfirmation;
+    }
+
+    public void setPasswordConfirmation(String passwordConfirmation) {
+        this.passwordConfirmation = passwordConfirmation;
+    }
+
     public String getName() {
         return name;
     }
@@ -41,5 +42,13 @@ public class MemberDto {
         this.name = name;
     }
 
-
+    @Override
+    public String toString() {
+        return "MemberDto{" +
+                "id='" + id + '\'' +
+                ", password='" + password + '\'' +
+                ", passwordConfirmation='" + passwordConfirmation + '\'' +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }
