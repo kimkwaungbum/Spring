@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>WEAVUS 로그인</title>
+</head>
+<body>
+<form action="/login" method="post">
+    ID : <input type="text" name="id"><br>
+    PW : <input type="password" name="password"> <br>
+    <button type ="submit">로그인</button>
+    <button type="button" onclick="location.href='/signup'">회원가입</button>
+
+</form>
+
+<span th:text ="${msg}"></span>
+
+
+</body>
+</html>
