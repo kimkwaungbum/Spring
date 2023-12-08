@@ -23,7 +23,7 @@ public class BoardController {
     private String detail(@PathVariable Integer no,  Model model) {
         Board board = boardRepo.findById(no).orElse(null);
 
-        // 
+        //
 
         model.addAttribute("board", board);
         return "board/detail";
